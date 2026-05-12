@@ -13,4 +13,5 @@ ADD CONSTRAINT exercicio1_t_user_pk PRIMARY KEY(id);
 ALTER TABLE exercicio1.t_user
 ADD CONSTRAINT exercicio1_t_user_uq_email UNIQUE(email);
 
-
+ALTER SEQUENCE exercicio1.t_user_id_seq
+RENAME TO exercicio1_t_user_seq_id;
