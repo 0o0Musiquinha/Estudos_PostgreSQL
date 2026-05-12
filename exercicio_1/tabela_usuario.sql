@@ -7,11 +7,13 @@ CREATE TABLE IF NOT EXISTS exercicio1.t_user(
 	password VARCHAR(128) NOT NULL
 );
 
+--CONSTRAINT's session
 ALTER TABLE exercicio1.t_user
 ADD CONSTRAINT exercicio1_t_user_pk PRIMARY KEY(id);
 
 ALTER TABLE exercicio1.t_user
 ADD CONSTRAINT exercicio1_t_user_uq_email UNIQUE(email);
 
+--SEQUENCE's session
 ALTER SEQUENCE exercicio1.t_user_id_seq
 RENAME TO exercicio1_t_user_seq_id;
