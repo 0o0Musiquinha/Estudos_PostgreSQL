@@ -11,21 +11,48 @@ CREATE TABLE IF NOT EXISTS exercicio2.t_user(
 	creation_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP(0),
 	access_tier SMALLINT NOT NULL,
 	
-	--CONSTRAINT's session
+	--CONSTRAINT session
 	CONSTRAINT exercicio2_t_user_pk PRIMARY KEY(id),
 	CONSTRAINT exercicio2_t_user_uq_email UNIQUE(email),
 
-	--CHECK CONSTRAINT's session
+	--CHECK CONSTRAINT session
+	CONSTRAINT exercicio2_t_user_ck_name CHECK(
+		name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+	),
+	CONSTRAINT exercicio2_t_user_ck_email CHECK(
+		email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$'
+	),
+	
 	CONSTRAINT exercicio2_t_user_ck_age CHECK(age BETWEEN 14 AND 120),
+	CONSTRAINT exercicio2_t_user_ck_password CHECK(
+		password ~ '^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)[^ ]{8,}.*$'
+		AND 
+		password != email
+	),
+	CONSTRAINT exercicio2_t_user_ck_phonenumber CHECK(
+		(
+			LENGTH(phonenumber) = 11
+			AND
+			phonenumber ~ '^[1-9]{2}9[0-9]{8}$'
+		)
+		OR
+		(
+			LENGTH(phonenumber) = 10
+			AND
+			phonenumber ~ '^[1-9]{2}[2-5]{1}[0-9]{7}$'
+		)
+		
+	),
 	CONSTRAINT exercicio2_t_user_ck_user_status CHECK(
 		user_status = 'ativo'
 		OR user_status = 'inativo'
 		OR user_status = 'bloqueado'
 		OR user_status = 'pendente'
 	),
-	CONSTRAINT exercicio2_t_user_ck_acess_tier CHECK(acess_tier BETWEEN 1 AND 5),
+	CONSTRAINT exercicio2_t_user_ck_access_tier CHECK(access_tier BETWEEN 1 AND 5)
 );
 
+--Permission session
 GRANT UPDATE, INSERT (
 	name, 
 	email, 
@@ -34,45 +61,21 @@ GRANT UPDATE, INSERT (
 	phonenumber, 
 	user_status, 
 	access_tier
-) ON exercicio2.t_user;
+) ON exercicio2.t_user TO PUBLIC;
 
+--Function's session
+-- Test's session
+	--name test session
+		--SELECT 'Augusto' ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$';
 
+	--email test session
+		--SELECT '0o0testes@gmail.com' ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$';
 
-
-CREATE FUNCTION exercicio2.exercicio2_t_user_ck_name_func (name VARCHAR(120)) 
-RETURNS BOOLEAN 
-AS $$
-LANGUAGE plpgsql 
-IMMUTABLE
-BEGIN
-	IF name ~* '[^a-záàâãèéêìíîóòôôúùû]' THEN
-		RETURN FALSE;
-	END IF;
+	--password test session
+		--SELECT 'seNhaaa 9@' ~ '^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)[^ ]{8,}.*$';
 	
-	IF name NOT LIKE '[a-záàâãèéêìíîóòôôúùû]%' && name NOT LIKE '%[a-záàâãèéêìíîóòôôúùû]' THEN
-		RETURN FALSE;
-	END IF;
+	--phonenumber test session
+		--SELECT '1159285221' ~ '^[1-9]{2}[2-5]{1}[0-9]{7}$';
+		--SELECT '11992852214' ~ '^[1-9]{2}9[0-9]{8}$';
 
-	IF LENGTH(name) < 3 THEN
-		RETURN FALSE;
-	END IF;
-
-	RETURN TRUE;
-END;
-$$;
-
-CREATE FUNCTION exercicio2.exercicio2_is_valid_email (email VARCHAR(254)) 
-RETURNS BOOLEAN 
-AS $$
-LANGUAGE plpgsql 
-IMMUTABLE
-BEGIN
-	RETURN(
-		email ~ '^[^.]{0,1}[A-Za-z0-9._%+-]{0,62}[^.]{1}@[^.._%+-]{1}[A-Za-z0-9.-]{1,252}[^.._%+-]{1}\.[a-z]{2,}$'
-	);
-END;
-$$;
-
-SELECT '0o0musiquinha@gmail.com' ~ '^[^.]{0,1}[A-Za-z0-9._%+-]{0,62}[^.]{1}@[^.._%+-]{1}[A-Za-z0-9.-]{1,252}[^.._%+-]{1}\.[a-z]{2,}$';
-
-SHOW timezone;
+	
