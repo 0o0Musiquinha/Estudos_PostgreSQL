@@ -1,5 +1,8 @@
 CREATE SCHEMA IF NOT EXISTS exercicio2;
 
+--Caso necessário
+DROP TABLE IF EXISTS exercicio2.t_user
+
 CREATE TABLE IF NOT EXISTS exercicio2.t_user(
 	id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY(SEQUENCE NAME exercicio2_t_user_seq),
 	name VARCHAR(120) NOT NULL,
@@ -44,24 +47,10 @@ CREATE TABLE IF NOT EXISTS exercicio2.t_user(
 		
 	),
 	CONSTRAINT exercicio2_t_user_ck_user_status CHECK(
-		user_status = 'ativo'
-		OR user_status = 'inativo'
-		OR user_status = 'bloqueado'
-		OR user_status = 'pendente'
+		user_status IN ('ativo', 'inativo', 'bloqueado', 'pendente')
 	),
 	CONSTRAINT exercicio2_t_user_ck_access_tier CHECK(access_tier BETWEEN 1 AND 5)
 );
-
---Permission session
-GRANT UPDATE, INSERT (
-	name, 
-	email, 
-	age, 
-	password, 
-	phonenumber, 
-	user_status, 
-	access_tier
-) ON exercicio2.t_user TO PUBLIC;
 
 --Function's session
 -- Test's session
