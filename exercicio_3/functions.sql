@@ -1,4 +1,4 @@
---Function's session
+--Validação de CPF
 CREATE OR REPLACE FUNCTION exercicio3.is_valid_cpf(p_cpf TEXT) 
 RETURNS BOOLEAN AS $$
 DECLARE
@@ -60,6 +60,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
+--Validação de CNPJ
 CREATE OR REPLACE FUNCTION exercicio3.is_valid_cnpj_alpha(v_cnpj TEXT) 
 RETURNS BOOLEAN AS $$
 DECLARE
@@ -117,5 +118,51 @@ BEGIN
     END IF;
 
     RETURN TRUE;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+--Gerar automaticamente códigos para produtos
+CREATE OR REPLACE FUNCTION exercicio3.product_code_generator()
+RETURNS TEXT AS $$
+DECLARE
+	v_i INT;
+	v_alphanumeric TEXT := 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	v_code TEXT;
+	v_condition INT = 0;
+BEGIN
+	WHILE v_condition = 0 LOOP
+		v_code := 'PRD-';
+		FOR i IN 1..15 LOOP
+			v_code := v_code || SUBSTRING(v_alphanumeric, FLOOR(random() * 36)::INT + 1, 1);
+		END LOOP;
+		IF NOT EXISTS (SELECT 1 FROM exercicio3.t_products WHERE code = v_code) THEN
+			v_condition := 1;
+		END IF;
+	END LOOP;
+	RETURN v_code;
+END;
+$$ LANGUAGE plpgsql IMMUTABLE;
+
+--Gerar automaticamente códigos para pedidos
+CREATE OR REPLACE FUNCTION exercicio3.order_code_generator()
+RETURNS TEXT AS $$
+DECLARE
+	v_i INT;
+	v_alphanumeric TEXT := 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+	v_date TIMESTAMPTZ := CURRENT_TIMESTAMP(0);
+	v_code TEXT;
+	v_condition INT := 0;
+BEGIN
+	WHILE v_condition = 0 LOOP
+		v_code := 'PED-' || TO_CHAR(v_date, 'YYYY') || TO_CHAR(v_date, 'MM') || TO_CHAR(v_date, 'DD') || '-';
+		FOR i IN 1..15 LOOP
+			v_code := v_code || SUBSTRING(v_alphanumeric, FLOOR(random() * 36)::INT + 1, 1);
+		END LOOP; 
+
+		IF NOT EXISTS (SELECT 1 FROM exercicio3.t_orders WHERE code = v_code) THEN
+			v_condition := 1;
+		END IF;
+	END LOOP;
+	RETURN v_code;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;

@@ -141,8 +141,8 @@ CREATE TABLE IF NOT EXISTS exercicio2.t_user(
 	--CONSTRAINT session
 	CONSTRAINT exercicio2_t_user_pk PRIMARY KEY(id),
 	CONSTRAINT exercicio2_t_user_uq_email UNIQUE(email),
-	CONSTRAINT exercicio1_t_user_uq_cpf UNIQUE(cpf),
-	CONSTRAINT exercicio1_t_user_uq_cnpj UNIQUE(cnpj),
+	CONSTRAINT exercicio2_t_user_uq_cpf UNIQUE(cpf),
+	CONSTRAINT exercicio2_t_user_uq_cnpj UNIQUE(cnpj),
 
 	--CHECK CONSTRAINT session
 	CONSTRAINT exercicio2_t_user_ck_name CHECK(
