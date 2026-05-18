@@ -1,5 +1,5 @@
 --Function's session
-CREATE OR REPLACE FUNCTION exercicio2.is_valid_cpf(p_cpf TEXT) 
+CREATE OR REPLACE FUNCTION exercicio3.is_valid_cpf(p_cpf TEXT) 
 RETURNS BOOLEAN AS $$
 DECLARE
     v_sum INT := 0;
@@ -60,7 +60,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION exercicio2.is_valid_cnpj_alpha(v_cnpj TEXT) 
+CREATE OR REPLACE FUNCTION exercicio3.is_valid_cnpj_alpha(v_cnpj TEXT) 
 RETURNS BOOLEAN AS $$
 DECLARE
     v_sum INT;
