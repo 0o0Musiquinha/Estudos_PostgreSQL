@@ -1,8 +1,8 @@
 -- Caso necessário
-DROP TABLE IF EXISTS exercicio3.t_user;
-DROP TABLE IF EXISTS exercicio3.t_categories;
-DROP TABLE IF EXISTS exercicio3.t_products ;
-DROP TABLE IF EXISTS exercicio3.t_orders;
+--DROP TABLE IF EXISTS exercicio3.t_orders;
+--DROP TABLE IF EXISTS exercicio3.t_products ;
+--DROP TABLE IF EXISTS exercicio3.t_user;
+--DROP TABLE IF EXISTS exercicio3.t_categories;
 
 --Usúario
 CREATE TABLE IF NOT EXISTS exercicio3.t_user(
