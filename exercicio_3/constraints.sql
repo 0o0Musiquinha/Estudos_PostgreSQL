@@ -1,28 +1,28 @@
 --Usúario
 	--DROP CONSTRAINTS existentes
 		--CONSTRAINTS
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT t_user_pkey;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT t_user_cnpj_key;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT t_user_cpf_key;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT t_user_email_key;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS t_user_pkey;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS t_user_cnpj_key;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS t_user_cpf_key;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS t_user_email_key;
 		--CHECK CONSTRAINTS
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_acess_tier;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_age;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_cnpj;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_cpf;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_email;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_name;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_password;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_phonenumber;
-		ALTER TABLE exercicio3.t_user DROP CONSTRAINT exercicio2_t_user_ck_user_status;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_acess_tier;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_age;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_cnpj;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_cpf;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_email;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_name;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_password;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_phonenumber;
+		ALTER TABLE exercicio3.t_user DROP CONSTRAINT IF EXISTS exercicio2_t_user_ck_user_status;
 
 
 	--ADD CONSTRAINTS
 		--CONSTRAINTS
-		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_pk PRIMARY KEY(exercicio3.t_user.id);
-		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_email UNIQUE(exercicio3.t_user.email);
-		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_cpf UNIQUE(exercicio3.t_user.cpf);
-		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_cnpj UNIQUE(exercicio3.t_user.cnpj);
+		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_pk PRIMARY KEY(id);
+		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_email UNIQUE(email);
+		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_cpf UNIQUE(cpf);
+		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_uq_cnpj UNIQUE(cnpj);
 		--CHECK CONSTRAINTS
 		ALTER TABLE exercicio3.t_user ADD CONSTRAINT exercicio3_t_user_ck_name CHECK(
 			name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
@@ -58,12 +58,12 @@
 
 --Categorias
 	--CONSTRAINTS
-	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_pk PRIMARY KEY(exercicio3.t_categories.id);
-	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_uq_name UNIQUE(exercicio3.t_categories.name);
+	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_pk PRIMARY KEY(id);
+	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_uq_name UNIQUE(name);
 
 	--CHECK CONSTRAINTS
 	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_ck_name CHECK(
-		exercicio3.t_categories.name >= 4
+		LENGTH(exercicio3.t_categories.name) >= 4
 	);
 	ALTER TABLE exercicio3.t_categories ADD CONSTRAINT exercicio3_t_categories_ck_status CHECK(
 		exercicio3.t_categories.status IN ('ativa', 'inativa', 'bloqueada', 'arquivada')
@@ -71,7 +71,7 @@
 
 --Produtos
 	--CONSTRAINTS
-	ALTER TABLE exercicio3.t_products ADD CONSTRAINT exercicio3_t_products_uq_code UNIQUE(exercicio3.t_products.code);
+	ALTER TABLE exercicio3.t_products ADD CONSTRAINT exercicio3_t_products_uq_code UNIQUE(code);
 	--CHECK CONSTRAINTS
 	ALTER TABLE exercicio3.t_products ADD CONSTRAINT exercicio3_t_products_ck_price CHECK(
 		exercicio3.t_products.price > 0
@@ -87,13 +87,13 @@
 	
 --Pedidos
 	--CONSTRAINTS
-	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_pk PRIMARY KEY(exercicio3.t_orders.id);
-	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_uq_code UNIQUE(exercicio3.t_orders.code);
+	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_pk PRIMARY KEY(id);
+	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_uq_code UNIQUE(code);
 	--CHECK CONSTRAINTS
-	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_ck_total_value(
+	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_ck_total_value CHECK(
 		exercicio3.t_orders.total_value >= 0
 	);
-	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_ck_status(
+	ALTER TABLE exercicio3.t_orders ADD CONSTRAINT exercicio3_t_orders_ck_status CHECK(
 		exercicio3.t_orders.status IN (
 			'aguardando_pagamento',
 			'pago', 
