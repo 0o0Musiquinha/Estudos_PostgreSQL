@@ -1,8 +1,8 @@
 -- Caso necessário
---DROP TABLE IF EXISTS exercicio3.t_user;
---DROP TABLE IF EXISTS exercicio3.t_categories;
---DROP TABLE IF EXISTS exercicio3.t_products ;
---DROP TABLE IF EXISTS exercicio3.t_orders;
+DROP TABLE IF EXISTS exercicio3.t_user;
+DROP TABLE IF EXISTS exercicio3.t_categories;
+DROP TABLE IF EXISTS exercicio3.t_products ;
+DROP TABLE IF EXISTS exercicio3.t_orders;
 
 --Usúario
 CREATE TABLE IF NOT EXISTS exercicio3.t_user(
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS exercicio3.t_user(
 CREATE TABLE IF NOT EXISTS exercicio3.t_categories(
 	id INT NOT NULL, --Demarquei como 'INT'pois, no meu entendimento, categoria abrange uma quantidade muito menor de dados que serão inseridos
 	name VARCHAR(60) NOT NULL,
-	status VARCHAR(9) NOT NULL DEFAULT 'ativa',
+	status VARCHAR(9) NOT NULL,
 	creation_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP(0)
 	
 );
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS exercicio3.t_categories(
 --Produtos
 CREATE TABLE IF NOT EXISTS exercicio3.t_products(
 	id BIGINT NOT NULL,
-	code VARCHAR(10) NOT NULL DEFAULT exercicio3.product_code_generator(),
+	code VARCHAR(19) NOT NULL DEFAULT exercicio3.product_code_generator(),
 	name VARCHAR(120) NOT NULL,
 	description VARCHAR(300) NOT NULL,
 	price DECIMAL(6,2) NOT NULL, --Anotar sobre problemas do REAL e FLOAT
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS exercicio3.t_products(
 --Pedidos
 CREATE TABLE IF NOT EXISTS exercicio3.t_orders(
 	id BIGINT NOT NULL,
-	code VARCHAR(17) NOT NULL DEFAULT exercicio3.order_code_generator(),
+	code VARCHAR(28) NOT NULL DEFAULT exercicio3.order_code_generator(),
 	total_value DECIMAL(6,2) NOT NULL,
 	status VARCHAR(20)NOT NULL,
 	order_date TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
