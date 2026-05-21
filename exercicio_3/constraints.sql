@@ -82,7 +82,7 @@
 	);
 
 	ALTER TABLE exercicio3.t_products ADD CONSTRAINT exercicio3_t_products_ck_status CHECK(
-		exercicio3.t_products.status IN ('ativo',  'insdisponivel', 'promoção', 'esgotado', 'cancelado')
+		exercicio3.t_products.status IN ('ativo',  'indisponivel', 'promoção', 'esgotado', 'cancelado')
 	);
 	
 --Pedidos
