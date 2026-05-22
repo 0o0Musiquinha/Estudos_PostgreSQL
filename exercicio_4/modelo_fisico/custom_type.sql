@@ -1,18 +1,36 @@
-DROP TYPE IF EXISTS GUARDIAN_STATUS;
-DROP TYPE IF EXISTS  VETERINARIAN_STATUS;
-DROP TYPE IF EXISTS ANIMAL_STATUS;
-DROP TYPE IF EXISTS ANIMAL_SEX;
-DROP TYPE IF EXISTS APPOINTMENT_STATUS;
-
 --guardian
-CREATE TYPE GUARDIAN_STATUS AS ENUM ('ativo', 'bloqueado', 'inativo');
+CREATE TYPE exercicio4.guardian_status 
+    AS ENUM (
+        'ativo', 
+        'bloqueado', 
+        'inativo'
+    );
 
 --veterinarian
-CREATE TYPE VETERINARIAN_STATUS AS ENUM ('ativo', 'afastado', 'desligado');
+CREATE TYPE exercicio4.veterinarian_status 
+    AS ENUM (
+        'ativo', 
+        'afastado', 
+        'desligado'
+    );
 
 --animal
-CREATE TYPE ANIMAL_STATUS AS ENUM ('ativo', 'tratamento', 'óbito');
-CREATE TYPE ANIMAL_SEX AS ENUM ('M', 'F');
+CREATE TYPE exercicio4.animal_status 
+    AS ENUM (
+        'ativo', 
+        'tratamento', 
+        'óbito'
+    );
+CREATE TYPE exercicio4.animal_sex 
+    AS ENUM (
+        'M', 
+        'F'
+    );
 
 --appointment
-CREATE TYPE APPOINTMENT_STATUS AS ENUM('agendamento', 'concluído', 'cancelado');
+CREATE TYPE exercicio4.appointment_status 
+    AS ENUM(
+        'agendamento', 
+        'concluído', 
+        'cancelado'
+    );
