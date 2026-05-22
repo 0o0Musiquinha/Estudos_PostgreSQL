@@ -133,16 +133,16 @@
 			ADD CONSTRAINT exercicio4_t_appointment_pk 
 			PRIMARY KEY(id);
 		
-		--CHECK CONSTRAINTS
+	--CHECK CONSTRAINTS
 		ALTER TABLE exercicio4.t_appointment 
 			ADD CONSTRAINT exercicio4_t_appointment_ck_price 
 			CHECK(
 				price >= 0
 			);
 
-	ALTER TABLE exercicio4.t_appointment 
-		ADD CONSTRAINT exercicio4_t_appointment_ck_duration 
-		CHECK(
-			LOWER(duration) <= UPPER(duration)
-		);
+		ALTER TABLE exercicio4.t_appointment 
+			ADD CONSTRAINT exercicio4_t_appointment_ck_duration 
+			CHECK(
+				LOWER(duration) <= UPPER(duration)
+			);
 	
