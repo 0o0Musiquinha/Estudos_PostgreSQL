@@ -1,7 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS btree_gist;
 --Guardião
 CREATE TABLE IF NOT EXISTS exercicio4.t_guardian(
-	id 				BIGINT 						NOT NULL,
+	id 				INT 						NOT NULL,
 	name 			VARCHAR(120) 				NOT NULL,
 	cpf 			VARCHAR(11)  				NOT NULL,
 	email 			VARCHAR(254) 				NOT NULL,
@@ -18,13 +18,13 @@ CREATE TABLE IF NOT EXISTS exercicio4.t_species(
 );
 
 CREATE TABLE IF NOT EXISTS exercicio4.t_specialty(
-	id 			INT 			NOT NULL,
+	id 			SMALLINT 		NOT NULL,
 	name 		VARCHAR(60) 	NOT NULL,
 	created_at 	TIMESTAMPTZ 	NOT NULL 	DEFAULT CURRENT_TIMESTAMP(0)
 );
 
 CREATE TABLE IF NOT EXISTS exercicio4.t_race(
-	id 			INT 			NOT NULL,
+	id 			SMALLINT 		NOT NULL,
 	name 		VARCHAR(60) 	NOT NULL,
 	created_at 	TIMESTAMPTZ 	NOT NULL 	DEFAULT CURRENT_TIMESTAMP(0),
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS exercicio4.t_race(
 );
 
 CREATE TABLE IF NOT EXISTS exercicio4.t_veterinarian(
-	id 		       	BIGINT 							NOT NULL,
+	id 		       	SMALLINT 						NOT NULL,
 	name 	       	VARCHAR(120) 					NOT NULL,
 	cpf 	       	VARCHAR(11) 					NOT NULL,
 	crmv 	       	VARCHAR(9) 						NOT NULL,
@@ -43,12 +43,12 @@ CREATE TABLE IF NOT EXISTS exercicio4.t_veterinarian(
 	created_at 	   	TIMESTAMPTZ 					NOT NULL 	DEFAULT CURRENT_TIMESTAMP(0),
 
 	--FKs
-	specialty_id 	INT 							NOT NULL
+	specialty_id 	SMALLINT 						NOT NULL
 
 );
 
 CREATE TABLE IF NOT EXISTS exercicio4.t_animal(
-	id 			BIGINT 						NOT NULL,
+	id 			INT 						NOT NULL,
 	name 		VARCHAR(120) 				NOT NULL,
 	birthday 	DATE 						NOT NULL,
 	weight 		DECIMAL(5,2) 				NOT NULL,
@@ -57,14 +57,14 @@ CREATE TABLE IF NOT EXISTS exercicio4.t_animal(
 	created_at 	TIMESTAMPTZ 				NOT NULL 	DEFAULT CURRENT_TIMESTAMP(0),
 
 	--FKs
-	race_id 	INT 			NULL,
+	race_id 	SMALLINT 		NULL,
 	species_id 	INT 			NULL,
-	guardian_id BIGINT 			NULL
+	guardian_id INT 			NULL
 	
 );
 
 CREATE TABLE IF NOT EXISTS exercicio4.t_appointment(
-	id 				BIGINT 							NOT NULL,
+	id 				INT 							NOT NULL,
 	duration 		TSTZRANGE 						NOT NULL,
 	diagnosis 		VARCHAR(200) 					NOT NULL,
 	price 			DECIMAL(7,2) 					NOT NULL,
@@ -72,8 +72,8 @@ CREATE TABLE IF NOT EXISTS exercicio4.t_appointment(
 	created_at 		TIMESTAMPTZ 					NOT NULL 	DEFAULT CURRENT_TIMESTAMP(0),
 
 	--FKs
-	animal_id 		BIGINT 							NOT NULL,
-	veterinarian_id BIGINT 							NOT NULL,
+	animal_id 		INT 							NOT NULL,
+	veterinarian_id SMALLINT 						NOT NULL,
 
 	--EXCLUDE
 	CONSTRAINT exercicio4_t_appointment_ex_duration_c_animal_id EXCLUDE 
