@@ -145,4 +145,12 @@
 			CHECK(
 				LOWER(duration) <= UPPER(duration)
 			);
+
+		ALTER TABLE exercicio4.t_appointment 
+			ADD CONSTRAINT exercicio4_t_appointment_ck_race_id_c_species_id 
+			CHECK(
+				(animal_id != NULL AND species_id = NULL)
+				OR
+				(animal_id = NULL AND species_id != NULL)
+			);
 	
