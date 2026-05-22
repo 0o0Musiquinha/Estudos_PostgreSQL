@@ -1,7 +1,7 @@
 --guardian
 CREATE TYPE exercicio4.guardian_status 
     AS ENUM (
-        'ativo', 
+        'ativo',
         'bloqueado', 
         'inativo'
     );
