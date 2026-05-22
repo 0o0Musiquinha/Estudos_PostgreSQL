@@ -7,7 +7,7 @@
 	--DROP SEQUENCE exercicio4_t_animal_id_seq;
 	--DROP SEQUENCE exercicio4_t_appointment_id_seq;
 
---Usúario
+--guardian
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_guardian_id_seq
 	AS INT
 	START WITH 1 
@@ -19,7 +19,7 @@ CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_guardian_id_seq
 		ALTER COLUMN id 
 			SET DEFAULT nextval('exercicio4.exercicio4_t_guardian_id_seq');
 	
---Categorias
+--species
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_species_id_seq
 	AS INT
 	START WITH 1 
@@ -31,9 +31,9 @@ CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_species_id_seq
 		ALTER COLUMN id 
 			SET DEFAULT nextval('exercicio4.exercicio4_t_species_id_seq');
 
---Produtos 
+--race 
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_race_id_seq
-	AS BIGINT
+	AS SMALLINT
 	START WITH 1 
 	INCREMENT BY 1
 	OWNED BY exercicio4.t_race.id;
@@ -43,20 +43,9 @@ CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_race_id_seq
 		ALTER COLUMN id 
 			SET DEFAULT nextval('exercicio4.exercicio4_t_race_id_seq');
 
---Pedidos
-CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_race_id_seq
-	AS BIGINT
-	START WITH 1 
-	INCREMENT BY 1
-	OWNED BY exercicio4.t_race.id;
-
-	--Define como padrão para a tabela
-	ALTER TABLE exercicio4.t_race 
-		ALTER COLUMN id 
-			SET DEFAULT nextval('exercicio4.exercicio4_t_race_id_seq');
-
+--veterinarian
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_veterinarian_id_seq
-	AS BIGINT
+	AS SMALLINT
 	START WITH 1 
 	INCREMENT BY 1
 	OWNED BY exercicio4.t_veterinarian.id;
@@ -66,8 +55,9 @@ CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_veterinarian_id_seq
 		ALTER COLUMN id 
 			SET DEFAULT nextval('exercicio4.exercicio4_t_veterinarian_id_seq');
 
+--animal
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_animal_id_seq
-	AS BIGINT
+	AS INT
 	START WITH 1 
 	INCREMENT BY 1
 	OWNED BY exercicio4.t_animal.id;
@@ -77,8 +67,9 @@ CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_animal_id_seq
 		ALTER COLUMN id 
 			SET DEFAULT nextval('exercicio4.exercicio4_t_animal_id_seq');
 
+--appointment
 CREATE SEQUENCE IF NOT EXISTS exercicio4.exercicio4_t_appointment_id_seq
-	AS BIGINT
+	AS INT
 	START WITH 1 
 	INCREMENT BY 1
 	OWNED BY exercicio4.t_appointment.id;
