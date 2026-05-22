@@ -106,7 +106,7 @@
 		ALTER TABLE exercicio4.t_veterinarian 
 			ADD CONSTRAINT exercicio4_t_veterinarian_ck_admission_date 
 			CHECK(
-				admission_date < CURRENT_DATE
+				admission_date < CURRENT_TIME(0)
 			);
 	
 	
