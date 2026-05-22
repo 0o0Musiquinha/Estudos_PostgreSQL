@@ -145,43 +145,61 @@ $$ LANGUAGE plpgsql IMMUTABLE;
 DROP TABLE IF EXISTS exercicio2.t_user;
 
 CREATE TABLE IF NOT EXISTS exercicio2.t_user(
-	id BIGINT NOT NULL GENERATED ALWAYS AS IDENTITY(SEQUENCE NAME exercicio2_t_user_seq),
-	name VARCHAR(120) NOT NULL,
-	cpf VARCHAR(11),
-	cnpj VARCHAR(14),
-	email VARCHAR(254) NOT NULL,
-	age SMALLINT,
-	password VARCHAR(128) NOT NULL,
-	phonenumber VARCHAR(11) NOT NULL,
-	user_status VARCHAR(9) NOT NULL DEFAULT 'ativo',
-	creation_date TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP(0),
-	access_tier SMALLINT NOT NULL,
+	id              BIGINT          NOT NULL    GENERATED ALWAYS AS IDENTITY(
+        SEQUENCE NAME exercicio2_t_user_seq
+    ),
+	name            VARCHAR(120)    NOT NULL,
+	cpf             VARCHAR(11),
+	cnpj            VARCHAR(14),
+	email           VARCHAR(254)    NOT NULL,
+	age             SMALLINT        NOT NULL,
+	password        VARCHAR(128)    NOT NULL,
+	phonenumber     VARCHAR(11)     NOT NULL,
+	user_status     VARCHAR(9)      NOT NULL    DEFAULT 'ativo',
+	creation_date   TIMESTAMPTZ     NOT NULL    DEFAULT CURRENT_TIMESTAMP(0),
+	access_tier     SMALLINT        NOT NULL,
 	
 	--CONSTRAINT session
-	CONSTRAINT exercicio2_t_user_pk PRIMARY KEY(id),
-	CONSTRAINT exercicio2_t_user_uq_email UNIQUE(email),
-	CONSTRAINT exercicio2_t_user_uq_cpf UNIQUE(cpf),
-	CONSTRAINT exercicio2_t_user_uq_cnpj UNIQUE(cnpj),
+	CONSTRAINT exercicio2_t_user_pk 
+    PRIMARY KEY(id),
+    
+	CONSTRAINT exercicio2_t_user_uq_email 
+    UNIQUE(email),
+
+	CONSTRAINT exercicio2_t_user_uq_cpf 
+    UNIQUE(cpf),
+
+	CONSTRAINT exercicio2_t_user_uq_cnpj 
+    UNIQUE(cnpj),
 
 	--CHECK CONSTRAINT session
 	CONSTRAINT exercicio2_t_user_ck_name CHECK(
 		name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
 	),
 
-	CONSTRAINT exercicio2_t_user_ck_cpf CHECK (exercicio2.is_valid_cpf(cpf)),
-	CONSTRAINT exercicio2_t_user_ck_cnpj CHECK (exercicio2.is_valid_cnpj_alpha(cnpj)),
+	CONSTRAINT exercicio2_t_user_ck_cpf 
+    CHECK (exercicio2.is_valid_cpf(cpf)),
+
+	CONSTRAINT exercicio2_t_user_ck_cnpj 
+    CHECK (exercicio2.is_valid_cnpj_alpha(cnpj)),
 	
-	CONSTRAINT exercicio2_t_user_ck_email CHECK(
+	CONSTRAINT exercicio2_t_user_ck_email 
+    CHECK(
 		email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$'
 	),
 	
-	CONSTRAINT exercicio2_t_user_ck_age CHECK(age BETWEEN 14 AND 120),
-	CONSTRAINT exercicio2_t_user_ck_password CHECK(
+	CONSTRAINT exercicio2_t_user_ck_age 
+    CHECK(age BETWEEN 14 AND 120),
+
+	CONSTRAINT exercicio2_t_user_ck_password 
+    CHECK(
 		password ~ '^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)[^ ]{8,}.*$'
 		AND 
 		password != email
 	),
-	CONSTRAINT exercicio2_t_user_ck_phonenumber CHECK(
+
+	CONSTRAINT exercicio2_t_user_ck_phonenumber 
+    CHECK(
 		(
 			LENGTH(phonenumber) = 11
 			AND
@@ -195,14 +213,15 @@ CREATE TABLE IF NOT EXISTS exercicio2.t_user(
 		)
 		
 	),
-	CONSTRAINT exercicio2_t_user_ck_user_status CHECK(
+
+	CONSTRAINT exercicio2_t_user_ck_user_status 
+    CHECK(
 		user_status IN ('ativo', 'inativo', 'bloqueado', 'pendente')
 	),
-	CONSTRAINT exercicio2_t_user_ck_access_tier CHECK(access_tier BETWEEN 1 AND 5)
+
+	CONSTRAINT exercicio2_t_user_ck_access_tier 
+    CHECK(access_tier BETWEEN 1 AND 5)
 );
-
-
-
 
 
 -- Test's session
