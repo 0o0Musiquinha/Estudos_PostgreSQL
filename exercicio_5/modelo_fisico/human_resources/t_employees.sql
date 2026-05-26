@@ -31,11 +31,20 @@ ALTER TABLE hr.t_employees
     ADD CONSTRAINT hr_t_employees_uq_employee_email
     UNIQUE(employee_email);
 
+ALTER TABLE hr.t_employees 
+    ADD CONSTRAINT hr_t_employees_ck_name
+    CHECK(
+        LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
+        AND
+        name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+    );
+
 ALTER TABLE hr.t_employees
     ADD CONSTRAINT hr_t_employees_ck_email
     CHECK(
         email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$'
     );
+
 ALTER TABLE hr.t_employees
     ADD CONSTRAINT hr_t_employees_ck_phonenumber
     CHECK(

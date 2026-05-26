@@ -14,7 +14,7 @@ ALTER TABLE hr.t_positions
         UNIQUE(name);
 
 ALTER TABLE hr.t_positions 
-        ADD CONSTRAINT hr_t_positions_check_name 
+        ADD CONSTRAINT hr_t_positions_ck_name 
         CHECK(
             LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
             AND
