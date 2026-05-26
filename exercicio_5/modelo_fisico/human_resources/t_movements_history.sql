@@ -8,3 +8,7 @@ CREATE TABLE IF NOT EXISTS hr.t_movements_history (
     employee_id     INT             NOT NULL,
     responsable_id  INT             NOT NULL
 );
+
+ALTER TABLE hr.t_movements_history
+    ADD CONSTRAINT hr_t_movements_history_pk
+    PRIMARY KEY(id);

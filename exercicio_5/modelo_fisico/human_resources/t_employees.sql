@@ -14,3 +14,46 @@ CREATE TABLE IF NOT EXISTS hr.t_employees (
     position_id     SMALLINT        NOT NULL
 
 );
+
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_pk 
+    PRIMARY KEY(id);
+
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_uq_employee_code
+    UNIQUE(employee_code);
+
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_uq_employee_pis
+    UNIQUE(pis);
+
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_uq_employee_email
+    UNIQUE(employee_email);
+
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_ck_email
+    CHECK(
+        email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$'
+    );
+ALTER TABLE hr.t_employees
+    ADD CONSTRAINT hr_t_employees_ck_phonenumber
+    CHECK(
+        (
+            LENGTH(phonenumber) = 11
+            AND
+            phonenumber ~ '^[1-9]{2}9[0-9]{8}$'
+        )
+        OR
+        (
+            LENGTH(phonenumber) = 10
+            AND
+            phonenumber ~ '^[1-9]{2}[2-5]{1}[0-9]{7}$'
+        )
+    );  
+
+ALTER TABLE it.t_employees
+    ALTER COLUMN created_at
+        SET DEFAULT CURRENT_TIMESTAMP(0);
+
+
