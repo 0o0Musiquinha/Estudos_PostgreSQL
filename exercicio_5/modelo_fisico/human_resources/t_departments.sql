@@ -42,3 +42,10 @@ ALTER TABLE hr.t_departments
 ALTER TABLE it.t_departments
         ALTER COLUMN created_at
             SET DEFAULT CURRENT_TIMESTAMP(0);
+
+--Relationships
+        ALTER TABLE hr.t_departments
+                ADD CONSTRAINT hr_t_departments_fk_department_head
+                FOREIGN KEY(department_head)
+                        REFERENCES hr.t_employees(id) DEFERRABLE INITIALLY IMMEDIATE
+                        --QUESTIONAR SOBRE O USO DO '...IMMEDIATE' e do '...DEFERRABLE'

@@ -61,8 +61,16 @@ ALTER TABLE hr.t_employees
         )
     );  
 
-ALTER TABLE it.t_employees
+ALTER TABLE hr.t_employees
     ALTER COLUMN created_at
         SET DEFAULT CURRENT_TIMESTAMP(0);
 
-
+--Relationships
+    ALTER TABLE hr.t_employees
+        ADD CONSTRAINT hr_t_employess_fk_position_id
+        FOREIGN KEY(position_id)
+            REFERENCES hr.t_positions(id);
+    ALTER TABLE hr.t_employees
+        ADD CONSTRAINT hr_t_employess_fk_department_id
+        FOREIGN KEY(department_id)
+            REFERENCES hr.t_departments(id);
