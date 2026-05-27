@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS it.t_equipments(
     created_at       TIMESTAMPTZ      NOT NULL
     
     -- FK
-    manufacturers_id SMALLINT         NOT NULL
+    manufacturer_id SMALLINT         NOT NULL
 );
 
 ALTER TABLE it.t_equipments
@@ -45,3 +45,9 @@ ALTER TABLE it.t_equipments
 ALTER TABLE it.t_equipments
     ALTER COLUMN created_at
         SET DEFAULT CURRENT_TIMESTAMP(0);
+
+--Relationships
+    ALTER TABLE it.t_equipments
+        ADD CONSTRAINT it_t_equipments_fk_manufacturer_id
+        FOREIGN KEY(manufacturer_id)
+            REFERENCES it.t_manufacturers(id);

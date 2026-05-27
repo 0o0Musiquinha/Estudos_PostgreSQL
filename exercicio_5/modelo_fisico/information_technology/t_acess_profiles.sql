@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS it.t_access_profiles (
     status      accesspro_status NOT NULL,
     created_at  TIMESTAMPTZ     NOT NULL
 );
-
 ALTER TABLE it.t_access_profiles
     ADD CONSTRAINT it_t_access_profiles_pk
     PRIMARY KEY(id);

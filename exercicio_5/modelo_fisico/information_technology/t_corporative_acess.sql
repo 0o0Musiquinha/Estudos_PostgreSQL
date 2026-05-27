@@ -22,3 +22,14 @@ ALTER TABLE it.t_corporative_access
 ALTER TABLE it.t_corporative_access
     ALTER COLUMN created_at
         SET DEFAULT CURRENT_TIMESTAMP(0);
+
+--Relationships
+    ALTER TABLE it.t_corporative_access
+        ADD CONSTRAINT it_t_corporative_access_fk_employee_id
+        FOREIGN KEY(employee_id)
+            REFERENCES hr.t_employees(id);
+            
+    ALTER TABLE it.t_corporative_access
+        ADD CONSTRAINT it_t_corporative_access_fk_acces_profile_id
+        FOREIGN KEY(access_profile_id)
+            REFERENCES it.t_access_profiles(id);

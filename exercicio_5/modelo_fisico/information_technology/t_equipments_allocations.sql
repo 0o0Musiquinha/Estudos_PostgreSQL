@@ -29,3 +29,13 @@ ALTER TABLE it.t_equipments_allocations
 ALTER TABLE it.t_equipments_allocations
     ALTER COLUMN created_at
         SET DEFAULT CURRENT_TIMESTAMP(0);
+
+--Relationships
+    ALTER TABLE it.t_equipments_allocations
+        ADD CONSTRAINT it_t_equipments_allocations_fk_equipment_id
+        FOREIGN KEY(equipment_id)
+            REFERENCES it.t_equipments(id);
+    ALTER TABLE it.t_equipments_allocations
+        ADD CONSTRAINT it_t_equipments_allocations_fk_employee_id
+        FOREIGN KEY(employee_id)
+            REFERENCES it.t_employees(id);
