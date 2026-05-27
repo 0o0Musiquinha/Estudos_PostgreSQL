@@ -23,5 +23,11 @@ ALTER TABLE finances.t_payrolls
     );
 
 ALTER TABLE finances.t_payrolls
-        ALTER COLUMN created_at
-            SET DEFAULT CURRENT_TIMESTAMP(0);
+    ALTER COLUMN created_at
+        SET DEFAULT CURRENT_TIMESTAMP(0);
+
+--Relationships
+    ALTER TABLE finances.t_payrolls
+        ADD CONSTRAINT finances_t_payrolls_fk_employee_id 
+        FOREIGN KEY(employee_id)
+            REFERENCES hr.t_employees(id);

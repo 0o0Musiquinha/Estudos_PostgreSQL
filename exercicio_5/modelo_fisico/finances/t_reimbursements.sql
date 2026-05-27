@@ -19,3 +19,18 @@ ALTER TABLE finances.t_reimbursements
     CHECK(
         employee_id != approver_id
     );
+
+--Relationships
+    ALTER TABLE finances.t_reimbursements
+        ADD CONSTRAINT finances_t_reimbursements_fk_employee_id
+        FOREIGN KEY employee_id
+            REFERENCES hr.t_employees(id);
+    ALTER TABLE finances.t_reimbursements
+        ADD CONSTRAINT finances_t_reimbursements_fk_department_id
+        FOREIGN KEY department_id
+            REFERENCES hr.t_departments(id);
+    ALTER TABLE finances.t_reimbursements
+        ADD CONSTRAINT finances_t_reimbursements_fk_approver_id
+        FOREIGN KEY approver_id
+            REFERENCES hr.t_employees(id);
+        
