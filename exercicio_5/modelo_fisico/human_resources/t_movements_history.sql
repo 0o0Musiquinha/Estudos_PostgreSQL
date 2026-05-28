@@ -1,6 +1,6 @@
-CREATE TABLE IF NOT EXISTS hr.t_movements_history (
+CREATE TABLE IF NOT EXISTS exercicio5_hr.t_movements_history (
     id              INT             NOT NULL,
-    movement_type   movement_type   NOT NULL,
+    movement_type   exercicio5_hr.movement_type   NOT NULL,
     description     VARCHAR(2000)   NOT NULL,
     created_at      TIMESTAMPTZ     NOT NULL,
     
@@ -9,17 +9,17 @@ CREATE TABLE IF NOT EXISTS hr.t_movements_history (
     responsable_id  INT             NOT NULL
 );
 
-ALTER TABLE hr.t_movements_history
-    ADD CONSTRAINT hr_t_movements_history_pk
+ALTER TABLE exercicio5_hr.t_movements_history
+    ADD CONSTRAINT exercicio5_hr_t_movements_history_pk
     PRIMARY KEY(id);
 
 --Relationships
-    ALTER TABLE hr.t_movements_history
-        ADD CONSTRAINT hr_t_movements_history_fk_employee_id
+    ALTER TABLE exercicio5_hr.t_movements_history
+        ADD CONSTRAINT exercicio5_hr_t_movements_history_fk_employee_id
         FOREIGN KEY(employee_id)
-            REFERENCES hr.t_employees(id);
-    ALTER TABLE hr.t_movements_history
-        ADD CONSTRAINT hr_t_movements_history_fk_responsable_id
+            REFERENCES exercicio5_hr.t_employees(id);
+    ALTER TABLE exercicio5_hr.t_movements_history
+        ADD CONSTRAINT exercicio5_hr_t_movements_history_fk_responsable_id
         FOREIGN KEY(responsable_id)
-            REFERENCES hr.t_employees(id);
+            REFERENCES exercicio5_hr.t_employees(id);
     

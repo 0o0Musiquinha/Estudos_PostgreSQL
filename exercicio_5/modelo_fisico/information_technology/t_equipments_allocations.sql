@@ -1,8 +1,8 @@
-CREATE TABLE IF NOT EXISTS it.t_equipments_allocations(
+CREATE TABLE IF NOT EXISTS exercicio5_it.t_equipments_allocations(
     id                  INT                 NOT NULL,
     allocation_period   TSTZRANGE           NOT NULL,
     reason              VARCHAR(200)        NOT NULL,
-    status              equipalloc_status   NOT NULL,
+    status              exercicio5_it.equipalloc_status   NOT NULL,
     created_at          TIMESTAMPTZ         NOT NULL,
 
     --FK
@@ -10,32 +10,32 @@ CREATE TABLE IF NOT EXISTS it.t_equipments_allocations(
     equipment_id        INT                 NOT NULL
 );
 
-ALTER TABLE it.t_equipments_allocations
-    ADD CONSTRAINT it_t_equipments_allocations_pk
+ALTER TABLE exercicio5_it.t_equipments_allocations
+    ADD CONSTRAINT exercicio5_it_t_equipments_allocations_pk
     PRIMARY KEY(id);
 
-ALTER TABLE it.t_equipments_allocations
-    ADD CONSTRAINT it_t_equipments_allocations_ck_allocation_duration
+ALTER TABLE exercicio5_it.t_equipments_allocations
+    ADD CONSTRAINT exercicio5_it_t_equipments_allocations_ck_allocation_duration
     CHECK(
         LOWER(allocation_period) < UPPER(allocation_period)
     );
 
-ALTER TABLE it.t_equipments_allocations
-    ADD CONSTRAINT it_t_equipments_allocations_ck_reason
+ALTER TABLE exercicio5_it.t_equipments_allocations
+    ADD CONSTRAINT exercicio5_it_t_equipments_allocations_ck_reason
     CHECK(
-        name ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        reason ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
     );
 
-ALTER TABLE it.t_equipments_allocations
+ALTER TABLE exercicio5_it.t_equipments_allocations
     ALTER COLUMN created_at
         SET DEFAULT CURRENT_TIMESTAMP(0);
 
 --Relationships
-    ALTER TABLE it.t_equipments_allocations
-        ADD CONSTRAINT it_t_equipments_allocations_fk_equipment_id
+    ALTER TABLE exercicio5_it.t_equipments_allocations
+        ADD CONSTRAINT exercicio5_it_t_equipments_allocations_fk_equipment_id
         FOREIGN KEY(equipment_id)
-            REFERENCES it.t_equipments(id);
-    ALTER TABLE it.t_equipments_allocations
-        ADD CONSTRAINT it_t_equipments_allocations_fk_employee_id
+            REFERENCES exercicio5_it.t_equipments(id);
+    ALTER TABLE exercicio5_it.t_equipments_allocations
+        ADD CONSTRAINT exercicio5_it_t_equipments_allocations_fk_employee_id
         FOREIGN KEY(employee_id)
-            REFERENCES it.t_employees(id);
+            REFERENCES exercicio5_hr.t_employees(id);

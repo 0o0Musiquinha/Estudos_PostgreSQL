@@ -1,10 +1,10 @@
-CREATE TYPE it.accesspro_status
+CREATE TYPE exercicio5_it.accesspro_status
 AS ENUM(
     'ativo',
     'inativo'
 );
 
-CREATE TYPE it.corpaccess_status
+CREATE TYPE exercicio5_it.corpaccess_status
 AS ENUM(
     'ativo',
     'bloqueado',
@@ -12,7 +12,7 @@ AS ENUM(
     'revogado'
 );
 
-CREATE TYPE it.equipment_status
+CREATE TYPE exercicio5_it.equipment_status
 AS ENUM(
     'disponível',
     'alocado',
@@ -20,7 +20,7 @@ AS ENUM(
     'baixado'
 );
 
-CREATE TYPE it.equipalloc_status
+CREATE TYPE exercicio5_it.equipalloc_status
 AS ENUM(
     'ativa',
     'encerrada',

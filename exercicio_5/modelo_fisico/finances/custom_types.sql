@@ -1,11 +1,11 @@
-CREATE TYPE finances.payroll_status
+CREATE TYPE exercicio5_finances.payroll_status
 AS ENUM(
     'pendente',
     'processado',
     'cancelado'
 );
 
-CREATE TYPE finances,reimbursement_status
+CREATE TYPE exercicio5_finances.reimbursement_status
 AS ENUM(
     'aberta',
     'aprovada',

@@ -1,7 +1,7 @@
 -- human resources
-CREATE SCHEMA IF NOT EXISTS hr;
+CREATE SCHEMA IF NOT EXISTS exercicio5_hr;
 
-CREATE SCHEMA IF NOT EXISTS finances;
+CREATE SCHEMA IF NOT EXISTS exercicio5_finances;
 
 -- Information technology
-CREATE SCHEMA IF NOT EXISTS it;
+CREATE SCHEMA IF NOT EXISTS exercicio5_it;

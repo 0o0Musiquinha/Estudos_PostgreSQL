@@ -1,17 +1,17 @@
-CREATE TYPE hr.department_status
+CREATE TYPE exercicio5_hr.department_status
 AS ENUM(
     'ativo',
     'inativo'
 );
 
-CREATE TYPE hr.employee_status
+CREATE TYPE exercicio5_hr.employee_status
 AS ENUM(
     'ativo',
     'afastado',
     'desligado'
 );
 
-CREATE TYPE hr.movement_type
+CREATE TYPE exercicio5_hr.movement_type
 AS ENUM(
     'admissão',
     'promoção',
