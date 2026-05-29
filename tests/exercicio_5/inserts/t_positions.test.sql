@@ -10,7 +10,7 @@ SELECT throws_ok(
             description
         )
         VALUES (
-            'Augusto Rodolfo de K4lheir0s'
+            'Augusto Rodolfo de K4lheir0s',
             'teste dos testes testados pelos magos dos testes'
         );
     $$,
@@ -25,7 +25,7 @@ SELECT throws_ok(
             description
         )
         VALUES (
-            'Augusto Rodolfo de Kalheiros'
+            'Augusto Rodolfo de Kalheiros',
             'teste dos testes testados pelos  magos dos testes'
         );
     $$,
