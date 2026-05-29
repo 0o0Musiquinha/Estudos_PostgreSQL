@@ -21,6 +21,12 @@ ALTER TABLE exercicio5_hr.t_positions
             name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
         );
 
+ALTER TABLE exercicio5_hr.t_positions 
+        ADD CONSTRAINT exercicio5_hr_t_positions_ck_description 
+        CHECK(
+            description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        );
+
 ALTER TABLE exercicio5_hr.t_positions
         ALTER COLUMN created_at
             SET DEFAULT CURRENT_TIMESTAMP(0);
