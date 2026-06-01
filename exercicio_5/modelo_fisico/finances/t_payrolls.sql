@@ -1,15 +1,17 @@
 CREATE TABLE IF NOT EXISTS exercicio5_finances.t_payrolls(
-    id              INT             NOT NULL,
-    employee_title  VARCHAR(60)     NOT NULL,
-    payment_day     TIMESTAMPTZ     NOT NULL,
-    gross_salary    DECIMAL(8,2)    NOT NULL,
-    deduction       DECIMAL(8,2)    NOT NULL,
-    net_salary      DECIMAL(8,2)    NOT NULL, -- possibilidade: GENERATED ALWAYS AS (gross_salary - deduction),
+    id              INT                                 NOT NULL,
+    employee_title  VARCHAR(60)                         NOT NULL,
+    payment_day     TIMESTAMPTZ                         NOT NULL,
+    gross_salary    DECIMAL(8,2)                        NOT NULL,
+    deduction       DECIMAL(8,2)                        NOT NULL,
+    net_salary      DECIMAL(8,2)                        NOT NULL    GENERATED ALWAYS AS (--aperfeiçoar dps
+        gross_salary - deduction --aperfeiçoar dps
+    ) STORED, -- possibilidade: GENERATED ALWAYS AS (gross_salary - deduction),
     status          exercicio5_finances.payroll_status  NOT NULL,
-    created_at      TIMESTAMPTZ     NOT NULL,
+    created_at      TIMESTAMPTZ                         NOT NULL,
 
     --FK
-    employee_id     INT             NOT NULL
+    employee_id     INT                                 NOT NULL
 );
 
 ALTER TABLE exercicio5_finances.t_payrolls

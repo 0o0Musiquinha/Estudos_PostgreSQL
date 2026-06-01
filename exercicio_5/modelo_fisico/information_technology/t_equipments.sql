@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS exercicio5_it.t_equipments(
-    id               INT NOT NULL,
-    patrimonial_id   VARCHAR(25)                    NOT NULL, --<serial_number><aquisition_date>
+    id               INT                            NOT NULL,
+    patrimonial_id   VARCHAR(27)                    NOT NULL    GENERATED ALWAYS AS ( --aperfeiçoar dps
+        serial_number || aquisition_date --aperfeiçoar dps
+    ), --aperfeiçoar dps
     serial_number    VARCHAR(17)                    NOT NULL, -- AB2026-CD-10001
     model            VARCHAR(60)                    NOT NULL,
     aquisition_date  TIMESTAMPTZ                    NOT NULL,
@@ -27,14 +29,14 @@ ALTER TABLE exercicio5_it.t_equipments
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_serial_number
     CHECK(
-        serial_number ~* '^[^ ]{1}(?!.*  )[0-9a-z]{1,17}[0-9]{1,8}[^ ]{1}$'
+        serial_number ~* '^[^ ]{1}(?!.*  )[0-9a-z]{1,17}[^ ]{1}$'
     );
 
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_model
     CHECK(
         model ~* '^[^ ]{1}(?!.*!@#$%&*,.;=+-  )[^ ]{1}$'
-    );   
+    );
 
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_aquisition_date
