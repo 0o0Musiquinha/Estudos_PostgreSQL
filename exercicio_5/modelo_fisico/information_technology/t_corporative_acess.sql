@@ -7,6 +7,14 @@ CREATE TABLE IF NOT EXISTS exercicio5_it.t_corporative_access(
     --FK
     employee_id         INT                  NOT NULL,
     access_profile_id    SMALLINT            NOT NULL
+
+    --EXCLUDE
+	CONSTRAINT exercicio5_t_corporative_access_ex_access_period_c_employee_id_c_access_profile_id EXCLUDE 
+		USING gist(
+			employee_id WITH =,
+            access_profile_id WITH =,
+			access_period WITH &&
+		)
 );
 
 ALTER TABLE exercicio5_it.t_corporative_access
@@ -18,6 +26,14 @@ ALTER TABLE exercicio5_it.t_corporative_access
     CHECK(
         LOWER(access_period) < UPPER(access_period)
     );
+
+ALTER TABLE exercicio5.t_corporative_access
+    ADD CONSTRAINT exercicio5_t_corporative_access_ex_access_period_c_employee_id_c_access_profile_id
+        EXCLUDE USING gist(
+            employee_id WITH =,
+            access_profile_id WITH =,
+            access_period WITH &&
+        ),
 
 ALTER TABLE exercicio5_it.t_corporative_access
     ALTER COLUMN created_at

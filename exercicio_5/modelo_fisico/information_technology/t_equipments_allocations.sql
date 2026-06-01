@@ -21,6 +21,13 @@ ALTER TABLE exercicio5_it.t_equipments_allocations
     );
 
 ALTER TABLE exercicio5_it.t_equipments_allocations
+    ADD CONSTRAINT exercicio5_t_corporative_access_ex_equipment_id_c_allocation_period
+        EXCLUDE USING gist(
+            equipment_id WITH =,
+            allocation_period WITH &&
+        ),
+
+ALTER TABLE exercicio5_it.t_equipments_allocations
     ADD CONSTRAINT exercicio5_it_t_equipments_allocations_ck_reason
     CHECK(
         reason ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'

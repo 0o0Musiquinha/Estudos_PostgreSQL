@@ -1,15 +1,15 @@
 CREATE TABLE IF NOT EXISTS exercicio5_it.t_equipments(
     id               INT NOT NULL,
-    patrimonial_id   VARCHAR(68)      NOT NULL, --<department_id>-<YEAR(aquisition_date)>-<model>-<0-9>
-    serial_number    VARCHAR(17)      NOT NULL, -- AB2026-CD-10001
-    model            VARCHAR(60)      NOT NULL,
-    aquisition_date  TIMESTAMPTZ      NOT NULL,
-    aquisition_price  DECIMAL(8,2)     NOT NULL,
+    patrimonial_id   VARCHAR(25)                    NOT NULL, --<serial_number><aquisition_date>
+    serial_number    VARCHAR(17)                    NOT NULL, -- AB2026-CD-10001
+    model            VARCHAR(60)                    NOT NULL,
+    aquisition_date  TIMESTAMPTZ                    NOT NULL,
+    aquisition_price DECIMAL(8,2)                   NOT NULL,
     status           exercicio5_it.equipment_status NOT NULL,
-    created_at       TIMESTAMPTZ      NOT NULL,
+    created_at       TIMESTAMPTZ                    NOT NULL,
     
     -- FK
-    manufacturer_id SMALLINT         NOT NULL
+    manufacturer_id  SMALLINT                       NOT NULL
 );
 
 ALTER TABLE exercicio5_it.t_equipments
@@ -25,10 +25,16 @@ ALTER TABLE exercicio5_it.t_equipments
     UNIQUE(serial_number);
 
 ALTER TABLE exercicio5_it.t_equipments
+    ADD CONSTRAINT exercicio5_it_t_equipments_ck_serial_number
+    CHECK(
+        serial_number ~* '^[^ ]{1}(?!.*  )[0-9a-z]{1,17}[0-9]{1,8}[^ ]{1}$'
+    );
+
+ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_model
     CHECK(
-        model ~* '^[^ ]{1}(?!.*  )[^ ]{1}$'
-    );
+        model ~* '^[^ ]{1}(?!.*!@#$%&*,.;=+-  )[^ ]{1}$'
+    );   
 
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_aquisition_date
