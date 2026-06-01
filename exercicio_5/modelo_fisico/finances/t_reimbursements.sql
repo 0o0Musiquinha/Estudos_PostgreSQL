@@ -20,6 +20,12 @@ ALTER TABLE exercicio5_finances.t_reimbursements
         employee_id != approver_id
     );
 
+ALTER TABLE exercicio5_finances.t_reimbursements
+    ADD CONSTRAINT exercicio5_finances_t_reimbursements_ck_description
+    CHECK(
+        description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+    );
+
 --Relationships
     ALTER TABLE exercicio5_finances.t_reimbursements
         ADD CONSTRAINT exercicio5_finances_t_reimbursements_fk_employee_id
