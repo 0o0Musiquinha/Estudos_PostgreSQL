@@ -17,13 +17,13 @@ ALTER TABLE exercicio5_it.t_access_profiles
 ALTER TABLE exercicio5_it.t_access_profiles
     ADD CONSTRAINT exercicio5_it_t_access_profiles_ck_name
     CHECK(
-        name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû_ ]{1,}[^ ]{1}$'
+        name ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû_ ]{1,}[^ ]{1}$'
     );
 
 ALTER TABLE exercicio5_it.t_access_profiles
     ADD CONSTRAINT exercicio5_it_t_access_profiles_ck_description
     CHECK(
-        description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        description ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
     );
 
 ALTER TABLE exercicio5_it.t_access_profiles
