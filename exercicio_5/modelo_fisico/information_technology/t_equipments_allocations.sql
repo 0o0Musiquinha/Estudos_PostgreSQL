@@ -30,7 +30,7 @@ ALTER TABLE exercicio5_it.t_equipments_allocations
 ALTER TABLE exercicio5_it.t_equipments_allocations
     ADD CONSTRAINT exercicio5_it_t_equipments_allocations_ck_reason
     CHECK(
-        reason ~* '^[^ ]{1}(?!.*  )[0-9a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        reason ~* '^[^ ]{1}(?!.*  ,,..-)[0-9a-záàâãèéêìíîóòôôúùû,.;- ]{1,}[^ ]{1}$'
     );
 
 ALTER TABLE exercicio5_it.t_equipments_allocations
