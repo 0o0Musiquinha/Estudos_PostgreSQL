@@ -26,10 +26,17 @@ ALTER TABLE exercicio5_hr.t_departments
 ALTER TABLE exercicio5_hr.t_departments
         ADD CONSTRAINT exercicio5_hr_t_departments_check_name
         CHECK(
-            LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
-            AND
-            name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+                LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
+                AND
+                name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
         );
+
+ALTER TABLE exercicio5_hr.t_departments
+        ADD CONSTRAINT exercicio5_hr_t_departments_check_acronym
+        CHECK(
+                acronym ~* '^[^ ]{1}(?!.*  )[A-Z0-9]{2,5}[^ ]{1}$'
+        );
+
 
 ALTER TABLE exercicio5_hr.t_departments
         ALTER COLUMN created_at

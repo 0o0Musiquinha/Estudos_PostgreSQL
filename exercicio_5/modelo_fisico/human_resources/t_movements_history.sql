@@ -1,17 +1,23 @@
 CREATE TABLE IF NOT EXISTS exercicio5_hr.t_movements_history (
-    id              INT             NOT NULL,
-    movement_type   exercicio5_hr.movement_type   NOT NULL,
-    description     VARCHAR(2000)   NOT NULL,
-    created_at      TIMESTAMPTZ     NOT NULL,
+    id              INT                             NOT NULL,
+    movement_type   exercicio5_hr.movement_type     NOT NULL,
+    description     VARCHAR(2000)                   NOT NULL,
+    created_at      TIMESTAMPTZ                     NOT NULL,
     
     --FK
-    employee_id     INT             NOT NULL,
-    responsable_id  INT             NOT NULL
+    employee_id     INT                             NOT NULL,
+    responsable_id  INT                             NOT NULL
 );
 
 ALTER TABLE exercicio5_hr.t_movements_history
     ADD CONSTRAINT exercicio5_hr_t_movements_history_pk
     PRIMARY KEY(id);
+
+ALTER TABLE exercicio5_hr.t_movements_history
+    ADD CONSTRAINT exercicio5_hr_t_movements_history_ck_description
+    CHECK(
+        description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+    );
 
 --Relationships
     ALTER TABLE exercicio5_hr.t_movements_history
