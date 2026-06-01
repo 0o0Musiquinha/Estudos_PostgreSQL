@@ -125,7 +125,7 @@
 		ALTER TABLE exercicio4.t_animal 
 			ADD CONSTRAINT exercicio4_t_animal__birthday 
 			CHECK(
-				birthday < CURRENT_DATE
+				birthday <= CURRENT_DATE
 			);
 --appointment
 	--CONSTRAINTS
