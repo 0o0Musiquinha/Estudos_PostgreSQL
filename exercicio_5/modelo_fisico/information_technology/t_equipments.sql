@@ -29,7 +29,7 @@ ALTER TABLE exercicio5_it.t_equipments
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_serial_number
     CHECK(
-        serial_number ~* '^[^ ]{1}(?!.*!@#$%&*,;  )[0-9a-z]{1,17}[^ ]{1}$'
+        serial_number ~* '^(?!.*\s{2})[\s\S]*[0-9a-z]{1,17}(.*[a-z0-9])?$'
     );
 
 ALTER TABLE exercicio5_it.t_equipments
