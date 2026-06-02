@@ -14,8 +14,8 @@ SELECT throws_ok(
             'PORQUE EU QUIS CARA ME DA O EQUIPAMENTO, por favorzinho S2'
         );
     $$,
-    '23514',
-    'new row for relation "t_equipments_allocations" violates check constraint "exercicio_it_t_equipments_allocations_ck_allocation_period"'
+    '22000',
+    'range lower bound must be less than or equal to range upper bound'
 );
 
 SELECT throws_ok(
@@ -30,7 +30,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_equipments_allocations" violates check constraint "exercicio_it_t_equipments_allocations_ck_access_period"'
+    'new row for relation "t_equipments_allocations" violates check constraint "exercicio_5_it_t_equipments_allocations_ck_access_period"'
 );
 
 SELECT * FROM finish();

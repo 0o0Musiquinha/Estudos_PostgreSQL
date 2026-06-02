@@ -14,6 +14,7 @@ INSERT INTO exercicio5_it.t_manufacturers (
 SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_equipments(
+            patrimonial_id,
             serial_number,
             model,
             aquisition_date,
@@ -22,6 +23,7 @@ SELECT throws_ok(
             manufacturer_id
         )
         VALUES (
+            'clovis45',
             'r4938henk#',
             'intel veyon beyond uno',
             '2026-05-25 15:30:00-03',
@@ -38,6 +40,7 @@ SELECT throws_ok(
 SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_equipments(
+            patrimonial_id,
             serial_number,
             model,
             aquisition_date,
@@ -46,6 +49,7 @@ SELECT throws_ok(
             manufacturer_id
         )
         VALUES (
+            'pericles76',
             'r4938henky',
             'clovis do boguis ping+do',
             '2023-03-25 15:30:00-03',
@@ -62,6 +66,7 @@ SELECT throws_ok(
 SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_equipments(
+            patrimonial_id,
             serial_number,
             model,
             aquisition_date,
@@ -70,6 +75,7 @@ SELECT throws_ok(
             manufacturer_id
         )
         VALUES (
+            'almondega76',
             'r4938henky',
             'intel veryzen de montek',
             '2026-06-25 15:30:00-03',
@@ -86,6 +92,7 @@ SELECT throws_ok(
 SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_equipments(
+            patrimonial_id,
             serial_number,
             model,
             aquisition_date,
@@ -94,6 +101,7 @@ SELECT throws_ok(
             manufacturer_id
         )
         VALUES (
+            'irineu89',
             'r4938henk89',
             'intel clovis beyond uno',
             '2026-03-25 15:30:00-03',
