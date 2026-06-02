@@ -35,7 +35,7 @@ ALTER TABLE exercicio5_it.t_equipments
 ALTER TABLE exercicio5_it.t_equipments
     ADD CONSTRAINT exercicio5_it_t_equipments_ck_model
     CHECK(
-        model ~* '^[^ ]{1}(?!.*!@#$%&*,.;=+-  )[a-zA-Z0-9 ]{1,}[^ ]{1}$'
+        model ~* '^[^ ]{1}(?!.*  )[a-zA-Z0-9 ]{1,}[^ ]{1}$'
     );
 
 ALTER TABLE exercicio5_it.t_equipments
