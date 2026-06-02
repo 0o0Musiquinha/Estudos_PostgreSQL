@@ -7,7 +7,7 @@ SELECT plan(4); --Quantidade de testesa a serem realizados
 INSERT INTO exercicio5_it.t_manufacturers (
     name
 ) VALUES (
-    'Intel'
+    'intel'
 );
 
 --serial_number
