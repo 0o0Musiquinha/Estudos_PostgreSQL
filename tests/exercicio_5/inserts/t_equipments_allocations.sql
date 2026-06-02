@@ -10,7 +10,7 @@ SELECT throws_ok(
             reason
         )
         VALUES (
-            '[2026-06-01 17:00:00-03, 2026-06-01 09:00:00-03)'
+            '[2026-06-01 17:00:00-03, 2026-06-01 09:00:00-03)',
             'PORQUE EU QUIS CARA ME DA O EQUIPAMENTO, por favorzinho S2'
         );
     $$,

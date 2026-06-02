@@ -27,8 +27,8 @@ ALTER TABLE exercicio5_it.t_corporative_access
         LOWER(access_period) < UPPER(access_period)
     );
 
-ALTER TABLE exercicio5.t_corporative_access
-    ADD CONSTRAINT exercicio5_t_corporative_access_ex_access_period_c_employee_id_c_access_profile_id
+ALTER TABLE exercicio5_it.t_corporative_access
+    ADD CONSTRAINT exercicio5_it_t_corporative_access_ex_access_period--_c_employee_id_c_access_profile_id
         EXCLUDE USING gist(
             employee_id WITH =,
             access_profile_id WITH =,

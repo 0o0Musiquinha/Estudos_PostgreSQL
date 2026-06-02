@@ -7,11 +7,15 @@ SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_access_profiles(
             name,
-            description
+            access_level,
+            description,
+            status
         )
         VALUES (
             'Acesso  administrativo',
-            'Acesso mais bolado das galaxias'
+            2,
+            'Acesso mais bolado das galaxias',
+            'ativo'
         );
     $$,
     '23514',
@@ -22,11 +26,15 @@ SELECT throws_ok(
     $$
         INSERT INTO exercicio5_it.t_access_profiles(
             name,
-            description
+            access_level,
+            description,
+            status
         )
         VALUES (
             'Acesso Restrito',
-            'Acesso restrito mais r3str1to do que tudo p0ssivel\@'
+            1,
+            'Acesso restrito mais r3str1to do que tudo p0ssivel\@',
+            'inativo'
         );
     $$,
     '23514',

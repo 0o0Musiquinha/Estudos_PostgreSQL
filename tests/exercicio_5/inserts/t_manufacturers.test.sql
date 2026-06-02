@@ -9,11 +9,11 @@ SELECT throws_ok(
             name
         )
         VALUES (
-            'Int3l',
+            'Int3l'
         );
     $$,
     '23514',
-    'new row for relation "t_manufacturers" violates check constraint "exercicio5_it_t_manufacsturers_ck_name"'
+    'new row for relation "t_manufacturers" violates check constraint "exercicio5_it_t_manufacturers_ck_name"'
 );
 
 SELECT * FROM finish();

@@ -25,7 +25,7 @@ SELECT throws_ok(
             'r4938henk#',
             'intel veyon beyond uno',
             '2026-05-25 15:30:00-03',
-            120.30
+            120.30,
             'disponível',
             1
         );
@@ -49,7 +49,7 @@ SELECT throws_ok(
             'r4938henky',
             'clovis do boguis ping+do',
             '2023-03-25 15:30:00-03',
-            10
+            10,
             'alocado',
             1
         );
@@ -73,7 +73,7 @@ SELECT throws_ok(
             'r4938henky',
             'intel veryzen de montek',
             '2026-06-25 15:30:00-03',
-            0
+            0,
             'disponível',
             1
         );
@@ -97,7 +97,7 @@ SELECT throws_ok(
             'r4938henk89',
             'intel clovis beyond uno',
             '2026-03-25 15:30:00-03',
-            -10.28
+            -10.28,
             'disponível',
             1
         );
