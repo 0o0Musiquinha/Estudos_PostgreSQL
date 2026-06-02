@@ -28,7 +28,7 @@ SELECT throws_ok(
         )
         VALUES (
             'clovis45',
-            'r4938henk#',
+            'r4938#enk',
             'R7 7800x3d',
             '2026-05-25 15:30:00-03',
             120.30,
