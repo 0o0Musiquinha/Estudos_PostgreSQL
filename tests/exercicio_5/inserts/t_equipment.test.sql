@@ -5,8 +5,11 @@ SELECT plan(4); --Quantidade de testesa a serem realizados
 
 --Insert para servir de FK
 INSERT INTO exercicio5_it.t_manufacturers (
+    id,
     name
-) VALUES (
+) 
+OVERRIDING SYSTEM VALUE(
+    1,
     'intel'
 );
 
