@@ -30,7 +30,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_equipments_allocations" violates check constraint "exercicio_5_it_t_equipments_allocations_ck_access_period"'
+    'new row for relation "t_equipments_allocations" violates check constraint "exercicio5_it_t_equipments_allocations_ck_access_period"'
 );
 
 SELECT * FROM finish();

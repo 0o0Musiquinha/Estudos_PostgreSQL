@@ -12,8 +12,8 @@ SELECT throws_ok(
             '[2026-06-01 17:00:00-03, 2026-06-01 09:00:00-03)'
         );
     $$,
-    '23514',
-    'new row for relation "t_corporative_access" violates check constraint "exercicio5_it_t_corporative_access_ck_access_period"'
+    '22000',
+    'range lower bound must be less than or equal to range upper bound'
 );
 
 SELECT * FROM finish();
