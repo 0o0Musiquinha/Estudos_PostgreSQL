@@ -51,7 +51,7 @@ SELECT throws_ok(
         VALUES (
             'pericles76',
             'r4938henky',
-            'clovis do boguis ping+do',
+            'clovis do boguis  pingudo',
             '2023-03-25 15:30:00-03',
             10,
             'alocado',
