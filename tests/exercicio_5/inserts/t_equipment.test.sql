@@ -8,7 +8,8 @@ INSERT INTO exercicio5_it.t_manufacturers (
     id,
     name
 ) 
-OVERRIDING SYSTEM VALUE(
+OVERRIDING SYSTEM VALUE
+VALUES(
     1,
     'intel'
 );
