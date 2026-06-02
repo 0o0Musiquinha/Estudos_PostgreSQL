@@ -19,7 +19,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_access_profiles" violates check constraint "exercicio_it_t_access_profiles_ck_name"'
+    'new row for relation "t_access_profiles" violates check constraint "exercicio5_it_t_access_profiles_ck_name"'
 );
 
 SELECT throws_ok(
@@ -38,7 +38,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_access_profiles" violates check constraint "exercicio5it_t_access_profiles_ck_description"'
+    'new row for relation "t_access_profiles" violates check constraint "exercicio5_it_t_access_profiles_ck_description"'
 );
 SELECT * FROM finish();
 

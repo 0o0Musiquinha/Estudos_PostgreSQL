@@ -25,7 +25,7 @@ SELECT throws_ok(
         VALUES (
             'clovis45',
             'r4938henk#',
-            'intel veyon beyond uno',
+            'intel veyon',
             '2026-05-25 15:30:00-03',
             120.30,
             'disponível',
