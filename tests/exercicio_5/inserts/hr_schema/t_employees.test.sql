@@ -47,7 +47,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'A2G123456789',
+            'A2G12345678',
             'Hideo Kojima',
             '60920663188',
             'hideo.kojima@gmail.com',
@@ -77,7 +77,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'AUG123456789',
+            'AUG12345678',
             'Hideo  Kojima',
             '60920663188',
             'hideo.kojima@gmail.com',
@@ -107,7 +107,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'AUG123456789',
+            'AUG12345678',
             'Hideo Kojima',
             '92873817246',
             'hideo.kojima@gmail.com',
@@ -137,7 +137,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'AUG123456789',
+            'AUG12345678',
             'Hideo Kojima',
             '92873817246',
             'hideo..kojima@gmail.com',
@@ -167,7 +167,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'AUG123456789',
+            'AUG12345678',
             'Hideo Kojima',
             '92873817246',
             'hideo.kojima@gmail.com',
@@ -197,7 +197,7 @@ SELECT throws_ok(
             position_id
         )
         VALUES (
-            'AUG123456789',
+            'AUG12345678',
             'Hideo Kojima',
             '92873817246',
             'hideo.kojima@gmail.com',

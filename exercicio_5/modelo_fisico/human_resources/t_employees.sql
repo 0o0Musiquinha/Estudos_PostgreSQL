@@ -34,7 +34,7 @@ ALTER TABLE exercicio5_hr.t_employees
 ALTER TABLE exercicio5_hr.t_employees 
     ADD CONSTRAINT exercicio5_hr_t_employees_ck_employee_code
     CHECK(
-        employee_code ~ '^[A-Z]{3}[0-9]{9}$'
+        employee_code ~ '^[A-Z]{3}[0-9]{8}$'
     );
 
 ALTER TABLE exercicio5_hr.t_employees 

@@ -3,7 +3,7 @@ BEGIN;
 SET search_path TO extension_pgtap;
 SELECT plan(2); --Quantidade de testesa a serem realizados
 
-SET CONSTRAINTS exercicio5_hr.exercicio5_hr_t_employee_fk_department_id DEFERRED;
+SET CONSTRAINTS exercicio5_hr.exercicio5_hr_t_employees_fk_department_id DEFERRED;
 
 INSERT INTO exercicio5_hr.t_employees(
     id,
@@ -19,7 +19,7 @@ INSERT INTO exercicio5_hr.t_employees(
 ) OVERRIDING SYSTEM VALUE
 VALUES (
     1,
-    'HID123456789',
+    'HID12345678',
     'Hideo Kojima',
     '92873817246',
     'hideo.kojima@gmail.com',
@@ -44,7 +44,7 @@ INSERT INTO exercicio5_hr.t_employees(
 ) OVERRIDING SYSTEM VALUE
 VALUES (
     2,
-    'HID298201982',
+    'HID29820192',
     'Hidetaka Kamiya',
     '92873817246',
     'hidetaka.kamiya@gmail.com',

@@ -19,7 +19,7 @@ INSERT INTO exercicio5_hr.t_employees(
 ) OVERRIDING SYSTEM VALUE
 VALUES (
     1,
-    'AUG123456789',
+    'AUG12345678',
     'Hideo Kojima',
     '92873817246',
     'hideo.kojima@gmail.com',
