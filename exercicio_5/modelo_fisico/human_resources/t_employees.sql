@@ -74,7 +74,7 @@ ALTER TABLE exercicio5_hr.t_employees
     );
 
 ALTER TABLE exercicio5_hr.t_employees
-    ADD CONSTRAINT exercicio5_hr_t_departments_ck_base_salary
+    ADD CONSTRAINT exercicio5_hr_t_employees_ck_base_salary
     CHECK(
         base_salary >= 1621.00
     );
