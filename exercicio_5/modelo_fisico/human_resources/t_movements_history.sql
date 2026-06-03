@@ -16,7 +16,13 @@ ALTER TABLE exercicio5_hr.t_movements_history
 ALTER TABLE exercicio5_hr.t_movements_history
     ADD CONSTRAINT exercicio5_hr_t_movements_history_ck_description
     CHECK(
-        description ~* '^\S(?!.*\s{2,})[a-záàâãèéêìíîóòôôúùû ]+\S$'
+        description ~* '^\S(?!.*\s{2,})(?!.*,,)(?!.*--)(?!.*\.\.)(?!.*;;)(?!.*"")[a-zçáàâãèéêìíîóòôôúùû,.;!" ]+\S$'
+    );
+
+ALTER TABLE exercicio5_hr.t_movements_history
+    ADD CONSTRAINT exercicio5_hr_t_movements_history_ck_employee_id_c_responsable_id
+    CHECK(
+        employee_id != responsable_id
     );
 
 --Relationships

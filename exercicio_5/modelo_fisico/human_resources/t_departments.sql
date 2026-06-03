@@ -24,7 +24,7 @@ ALTER TABLE exercicio5_hr.t_departments
         UNIQUE(acronym);
 
 ALTER TABLE exercicio5_hr.t_departments
-        ADD CONSTRAINT exercicio5_hr_t_departments_check_name
+        ADD CONSTRAINT exercicio5_hr_t_departments_ck_name
         CHECK(
                 LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
                 AND
@@ -32,9 +32,15 @@ ALTER TABLE exercicio5_hr.t_departments
         );
 
 ALTER TABLE exercicio5_hr.t_departments
-        ADD CONSTRAINT exercicio5_hr_t_departments_check_acronym
+        ADD CONSTRAINT exercicio5_hr_t_departments_ck_acronym
         CHECK(
                 acronym ~ '^[A-Z0-9]{2,5}$'    
+        );
+
+ALTER TABLE exercicio5_hr.t_departments
+        ADD CONSTRAINT exercicio5_hr_t_departments_ck_monthly_budget
+        CHECK(
+                monthly_budget >= 5000.00
         );
 
 ALTER TABLE exercicio5_hr.t_departments
