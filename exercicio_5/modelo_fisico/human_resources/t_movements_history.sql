@@ -16,7 +16,7 @@ ALTER TABLE exercicio5_hr.t_movements_history
 ALTER TABLE exercicio5_hr.t_movements_history
     ADD CONSTRAINT exercicio5_hr_t_movements_history_ck_description
     CHECK(
-        description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        description ~* '^\S(?!.*\s{2,})[a-záàâãèéêìíîóòôôúùû ]+\S$'
     );
 
 --Relationships

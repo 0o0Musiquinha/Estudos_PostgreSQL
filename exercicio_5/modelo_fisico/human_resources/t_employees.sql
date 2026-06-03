@@ -32,17 +32,29 @@ ALTER TABLE exercicio5_hr.t_employees
     UNIQUE(employee_email);
 
 ALTER TABLE exercicio5_hr.t_employees 
+    ADD CONSTRAINT exercicio5_hr_t_employees_ck_employee_code
+    CHECK(
+        employee_code ~* '^[a-z]{3}[0-9]{9}$'
+    );
+
+ALTER TABLE exercicio5_hr.t_employees 
     ADD CONSTRAINT exercicio5_hr_t_employees_ck_name
     CHECK(
         LENGTH(name) > 3 --pelo pesquisado não possui cargos menores do que 4 caracteres
         AND
-        name ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        name ~* '^\S(?!.*\s{2,})[a-záàâãèéêìíîóòôôúùû ]+\S$'
+    );
+
+ALTER TABLE exercicio5_hr.t_employees 
+    ADD CONSTRAINT exercicio5_hr_t_employees_ck_pis
+    CHECK(
+        exercicio5_hr.is_valid_pis(pis)
     );
 
 ALTER TABLE exercicio5_hr.t_employees
     ADD CONSTRAINT exercicio5_hr_t_employees_ck_employee_email
     CHECK(
-        employee_email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,252}\..*[^._%+-]{1}$'
+        employee_email ~ '^[^.]{1}(?!.*\.\.)[A-Za-z0-9._%+-]{0,62}[^.]{1}@(?!.*\.\.)[^._%+-]{1}[A-Za-z0-9.-]{0,190}\..*[^._%+-]{1}$'
     );
 
 ALTER TABLE exercicio5_hr.t_employees
