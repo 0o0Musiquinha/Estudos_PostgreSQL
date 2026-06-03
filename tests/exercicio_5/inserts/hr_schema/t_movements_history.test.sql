@@ -54,6 +54,7 @@ VALUES (
     NULL,
     1
 );
+
 --description
 SELECT throws_ok(
     $$
