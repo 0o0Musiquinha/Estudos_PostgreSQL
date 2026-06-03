@@ -85,10 +85,10 @@ ALTER TABLE exercicio5_hr.t_employees
 
 --Relationships
     ALTER TABLE exercicio5_hr.t_employees
-        ADD CONSTRAINT exercicio5_hr_t_employess_fk_position_id
+        ADD CONSTRAINT exercicio5_hr_t_employees_fk_position_id
         FOREIGN KEY(position_id)
             REFERENCES exercicio5_hr.t_positions(id);
     ALTER TABLE exercicio5_hr.t_employees
-        ADD CONSTRAINT exercicio5_hr_t_employess_fk_department_id
+        ADD CONSTRAINT exercicio5_hr_t_employees_fk_department_id
         FOREIGN KEY(department_id)
             REFERENCES exercicio5_hr.t_departments(id) DEFERRABLE INITIALLY IMMEDIATE;
