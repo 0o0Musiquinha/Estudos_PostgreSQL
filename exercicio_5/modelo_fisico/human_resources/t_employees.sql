@@ -71,7 +71,13 @@ ALTER TABLE exercicio5_hr.t_employees
             AND
             phonenumber ~ '^[1-9]{2}[2-5]{1}[0-9]{7}$'
         )
-    );  
+    );
+
+ALTER TABLE exercicio5_hr.t_employees
+    ADD CONSTRAINT exercicio5_hr_t_departments_ck_base_salary
+    CHECK(
+        base_salary >= 1621.00
+    );
 
 ALTER TABLE exercicio5_hr.t_employees
     ALTER COLUMN created_at
