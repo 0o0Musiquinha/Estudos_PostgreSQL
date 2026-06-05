@@ -140,7 +140,7 @@ SELECT throws_ok(
         VALUES (
             'AUG12345678',
             'Hideo Kojima',
-            '92873817246',
+            '68230439224',
             'hideo..kojima@gmail.com',
             '1140028922',
             2000.00,
@@ -170,7 +170,7 @@ SELECT throws_ok(
         VALUES (
             'AUG12345678',
             'Hideo Kojima',
-            '92873817246',
+            '68230439224',
             'hideo.kojima@gmail.com',
             '11400289220',
             2000.00,
@@ -200,7 +200,7 @@ SELECT throws_ok(
         VALUES (
             'AUG12345678',
             'Hideo Kojima',
-            '92873817246',
+            '68230439224',
             'hideo.kojima@gmail.com',
             '1140028922',
             1200.00,
