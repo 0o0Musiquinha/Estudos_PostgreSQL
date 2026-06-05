@@ -5,6 +5,17 @@ SELECT plan(2); --Quantidade de testesa a serem realizados
 
 SET CONSTRAINTS exercicio5_hr.exercicio5_hr_t_employees_fk_department_id DEFERRED;
 
+INSERT INTO exercicio5_hr.t_positions(
+    id,
+    name,
+    description
+) OVERRIDING SYSTEM VALUE 
+VALUES(
+    1,
+    'Cargo legal',
+    'Cargo designado para pessoas legais com acessos legais para atividades legais'
+);
+
 INSERT INTO exercicio5_hr.t_employees(
     id,
     employee_code,
