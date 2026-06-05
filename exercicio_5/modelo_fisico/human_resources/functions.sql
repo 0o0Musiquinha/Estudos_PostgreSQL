@@ -1,12 +1,12 @@
 CREATE OR REPLACE FUNCTION exercicio5_hr.is_valid_pis(p_pis TEXT) 
 RETURNS BOOLEAN AS $$
 DECLARE
-    v_sum SMALLINT := 0;
-    v_digit SMALLINT;
-    v_i SMALLINT;
-    v_pis_array SMALLINT[11];
+    v_sum INT := 0;
+    v_digit INT;
+    v_i INT;
+    v_pis_array INT[11];
     -- Pesos oficiais para multiplação do PIS
-    v_weights SMALLINT[] := ARRAY[3,2,9,8,7,6,5,4,3,2];
+    v_weights INT[] := ARRAY[3,2,9,8,7,6,5,4,3,2];
 BEGIN
     -- O PIS deve conter exatamente 11 dígitos
     IF LENGTH(p_pis) != 11 THEN
@@ -27,7 +27,7 @@ BEGIN
     END IF;
 
     FOR v_1 IN 1..11 LOOP
-        v_pis_array := array_append(SUBSTRING(p_pis FROM v_i FOR 1)::SMALLINT)
+        v_pis_array := array_append(SUBSTRING(p_pis FROM v_i FOR 1))::INT;
     END LOOP;
 
     -- Cálculo de validação do dígito verificador
