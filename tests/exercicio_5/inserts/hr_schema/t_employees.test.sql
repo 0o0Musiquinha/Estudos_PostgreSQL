@@ -29,8 +29,8 @@ VALUES(
     'Departamento dos Bacanas',
     'DB',
     200000.00,
-    'ativo'
-    NULL
+    'ativo',
+    1
 );
 
 --employee_id
