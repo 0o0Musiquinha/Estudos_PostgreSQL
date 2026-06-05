@@ -1,7 +1,7 @@
 BEGIN;
 
 SET search_path TO extension_pgtap;
-SELECT plan(3); --Quantidade de testesa a serem realizados
+SELECT plan(5); --Quantidade de testesa a serem realizados
 
 SELECT diag('Retorna TRUE se o PIS for válido');
 SELECT is(exercicio5_hr.is_valid_pis('60920663188'), true, 'PIS válido');
