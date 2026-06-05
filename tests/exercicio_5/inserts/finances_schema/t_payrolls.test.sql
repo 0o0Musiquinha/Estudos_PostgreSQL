@@ -44,7 +44,7 @@ VALUES (
 --employee_title
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_payrolls(
+        INSERT INTO exercicio5_finances.t_payrolls(
             employee_title,
             payment_day,
             gross_salary,
@@ -62,13 +62,13 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_payrolls" violates check constraint "exercicio5_hr_t_payrolls_ck_employee_title"'
+    'new row for relation "t_payrolls" violates check constraint "exercicio5_finances_t_payrolls_ck_employee_title"'
 );
 
 --payment_day
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_payrolls(
+        INSERT INTO exercicio5_finances.t_payrolls(
             employee_title,
             payment_day,
             gross_salary,
@@ -86,13 +86,13 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_payrolls" violates check constraint "exercicio5_hr_t_payrolls_ck_payment_day"'
+    'new row for relation "t_payrolls" violates check constraint "exercicio5_finances_t_payrolls_ck_payment_day"'
 );
 
 --gross_salary
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_payrolls(
+        INSERT INTO exercicio5_finances.t_payrolls(
             employee_title,
             payment_day,
             gross_salary,
@@ -110,13 +110,13 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_payrolls" violates check constraint "exercicio5_hr_t_payrolls_ck_gross_salary"'
+    'new row for relation "t_payrolls" violates check constraint "exercicio5_finances_t_payrolls_ck_gross_salary"'
 );
 
 --deduction
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_payrolls(
+        INSERT INTO exercicio5_finances.t_payrolls(
             employee_title,
             payment_day,
             gross_salary,
@@ -134,7 +134,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_payrolls" violates check constraint "exercicio5_hr_t_payrolls_ck_deduction"'
+    'new row for relation "t_payrolls" violates check constraint "exercicio5_finances_t_payrolls_ck_deduction"'
 );
 
 SELECT * FROM finish();

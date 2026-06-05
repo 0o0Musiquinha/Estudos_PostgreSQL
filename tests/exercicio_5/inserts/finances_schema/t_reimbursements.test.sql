@@ -86,7 +86,7 @@ VALUES(
 --value
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_reimbursements(
+        INSERT INTO exercicio5_finances.t_reimbursements(
             value,
             description,
             status,
@@ -104,13 +104,13 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_reimbursements" violates check constraint "exercicio5_hr_t_reimbursements_ck_value"'
+    'new row for relation "t_reimbursements" violates check constraint "exercicio5_finances_t_reimbursements_ck_value"'
 );
 
 --description
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_reimbursements(
+        INSERT INTO exercicio5_finances.t_reimbursements(
             value,
             description,
             status,
@@ -128,13 +128,13 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_reimbursements" violates check constraint "exercicio5_hr_t_reimbursements_ck_description"'
+    'new row for relation "t_reimbursements" violates check constraint "exercicio5_finances_t_reimbursements_ck_description"'
 );
 
 --description
 SELECT throws_ok(
     $$
-        INSERT INTO exercicio5_hr.t_reimbursements(
+        INSERT INTO exercicio5_finances.t_reimbursements(
             value,
             description,
             status,
@@ -152,7 +152,7 @@ SELECT throws_ok(
         );
     $$,
     '23514',
-    'new row for relation "t_reimbursements" violates check constraint "exercicio5_hr_t_reimbursements_ck_employee_id"'
+    'new row for relation "t_reimbursements" violates check constraint "exercicio5_finances_t_reimbursements_ck_employee_id"'
 );
 
 SELECT * FROM finish();
