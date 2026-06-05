@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS exercicio5_finances.t_payrolls(
     payment_day     TIMESTAMPTZ                         NOT NULL,
     gross_salary    DECIMAL(8,2)                        NOT NULL,
     deduction       DECIMAL(8,2)                        NOT NULL,
-    net_salary      DECIMAL(8,2)                        NOT NULL    GENERATED ALWAYS AS (--aperfeiçoar dps
-        gross_salary - deduction --aperfeiçoar dps
+    net_salary      DECIMAL(8,2)                        NOT NULL    GENERATED ALWAYS AS (
+        gross_salary - deduction
     ) STORED, -- possibilidade: GENERATED ALWAYS AS (gross_salary - deduction),
     status          exercicio5_finances.payroll_status  NOT NULL,
     created_at      TIMESTAMPTZ                         NOT NULL,
@@ -21,7 +21,25 @@ ALTER TABLE exercicio5_finances.t_payrolls
 ALTER TABLE exercicio5_finances.t_payrolls
     ADD CONSTRAINT exercicio5_finances_t_payrolls_ck_employee_title
     CHECK(
-        employee_title ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        employee_title ~* '^\S(?!.*\s{2,})[a-záàâãèéêìíîóòôôúùû ]+\S$'
+    );
+
+ALTER TABLE exercicio5_finances.t_payrolls
+    ADD CONSTRAINT exercicio5_finances_t_payrolls_ck_payment_day
+    CHECK(
+        payment_day >= CURRENT_TIMESTAMP(0)
+    );
+
+ALTER TABLE exercicio5_finances.t_payrolls
+    ADD CONSTRAINT exercicio5_finances_t_payrolls_ck_gross_salary
+    CHECK(
+        gross_salary >= 1621.00
+    );
+
+ALTER TABLE exercicio5_finances.t_payrolls
+    ADD CONSTRAINT exercicio5_finances_t_payrolls_ck_deduction
+    CHECK(
+        deduction >= 0
     );
 
 ALTER TABLE exercicio5_finances.t_payrolls

@@ -21,9 +21,15 @@ ALTER TABLE exercicio5_finances.t_reimbursements
     );
 
 ALTER TABLE exercicio5_finances.t_reimbursements
+    ADD CONSTRAINT exercicio5_finances_t_reimbursements_ck_value
+    CHECK(
+        value > 0
+    );
+
+ALTER TABLE exercicio5_finances.t_reimbursements
     ADD CONSTRAINT exercicio5_finances_t_reimbursements_ck_description
     CHECK(
-        description ~* '^[^ ]{1}(?!.*  )[a-záàâãèéêìíîóòôôúùû ]{1,}[^ ]{1}$'
+        description ~* '^\S(?!.*\s{2,})[a-záàâãèéêìíîóòôôúùûç ]+\S$'
     );
 
 --Relationships
