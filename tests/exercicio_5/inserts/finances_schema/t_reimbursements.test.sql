@@ -1,7 +1,7 @@
 BEGIN;
 
 SET search_path TO extension_pgtap;
-SELECT plan(4); --Quantidade de testesa a serem realizados
+SELECT plan(3); --Quantidade de testesa a serem realizados
 
 SET CONSTRAINTS exercicio5_hr.exercicio5_hr_t_employees_fk_department_id, exercicio5_hr.exercicio5_hr_t_departments_fk_department_head  DEFERRED;
 
