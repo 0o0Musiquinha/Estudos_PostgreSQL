@@ -21,7 +21,7 @@ VALUES (
     1,
     'AUG12345678',
     'Hideo Kojima',
-    '92873817246',
+    '60920663188',
     'hideo.kojima@gmail.com',
     '1140028922',
     1800.00,

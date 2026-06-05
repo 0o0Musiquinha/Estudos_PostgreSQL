@@ -25,6 +25,10 @@ ALTER TABLE exercicio5_hr.t_movements_history
         employee_id != responsable_id
     );
 
+ALTER TABLE exercicio5_hr.t_movements_history
+    ALTER COLUMN created_at
+        SET DEFAULT CURRENT_TIMESTAMP(0);
+
 --Relationships
     ALTER TABLE exercicio5_hr.t_movements_history
         ADD CONSTRAINT exercicio5_hr_t_movements_history_fk_employee_id
