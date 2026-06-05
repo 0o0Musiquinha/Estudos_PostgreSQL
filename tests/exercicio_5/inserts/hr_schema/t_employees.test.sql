@@ -29,6 +29,7 @@ VALUES(
     'Departamento dos Bacanas',
     'DB',
     200000.00,
+    'ativo'
     NULL
 );
 
