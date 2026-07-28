@@ -1,0 +1,1 @@
+CREATE SQUEMA IF NOT EXISTS ex_rbac;
