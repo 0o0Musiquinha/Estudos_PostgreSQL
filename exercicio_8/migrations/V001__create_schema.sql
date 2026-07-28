@@ -1,1 +1,1 @@
-CREATE SQUEMA IF NOT EXISTS ex_rbac;
+CREATE SCHEMA IF NOT EXISTS exercicios_rbac;
